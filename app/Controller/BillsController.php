@@ -142,12 +142,15 @@ class BillsController extends AppController {
 	 */
 	public function pdfExport($id =null)
 	{
-		//$this->Bill->
 		$this->layout ="pdf";
 		App::uses('TCPDF', 'Lib/tcpdf');
 		$pdf = new TCPDF();
 		$pdf->addPage();
 		$bill = $this->Bill->find('first',array('conditions'=> array('Bill.id' => $id)));
+		$dateTime = new DateTime("now");
+		$bill['Bill']['print_date'] = $dateTime->format("Y-m-d h:i:s");
+		unset($bill['Bill']['paid_date']);
+		$this->Bill->save($bill);
 		$this->set("pdf", $pdf);
 		$this->set('bill',$bill);
 	}
