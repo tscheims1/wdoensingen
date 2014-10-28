@@ -1,0 +1,63 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2014-10-28 19:52+0100\n"
+"PO-Revision-Date: 2014-10-28 19:53+0100\n"
+"Last-Translator: Hofer Filip <filip.hofer@ggs.ch>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de_DE\n"
+
+msgid "Title"
+msgstr "Anrede"
+
+msgid "Firstname"
+msgstr "Name"
+
+msgid "Lastname"
+msgstr "Vorname"
+
+msgid "Street"
+msgstr "Strasse"
+
+msgid "Zip"
+msgstr "PLZ"
+
+msgid "city"
+msgstr "Stadt"
+
+msgid "Phone"
+msgstr "Telefon"
+
+msgid "Mobile"
+msgstr "Mobil Telefon"
+
+msgid "Customers"
+msgstr "Kunden"
+
+msgid "Customer"
+msgstr "Kunde"
+
+msgid "Bill"
+msgstr "Rechnung"
+
+msgid "Create Date"
+msgstr "Erstellt am"
+
+msgid "Print Date"
+msgstr "Ausgedruckt am"
+
+msgid "Paid Date"
+msgstr "Bezahlt am"
+
+msgid "Bill Number"
+msgstr "Nummer"
+
+msgid "Bill Type"
+msgstr "Rechnungsart"
+
