@@ -15,8 +15,8 @@
 					<div class="panel-heading">Actions</div>
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Kunden'), array('action' => 'index'), array('escape' => false)); ?></li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neuer Kunde'), array('action' => 'add'), array('escape' => false)); ?></li>
+								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Kunden'), array('controller' => 'customers','action' => 'index'), array('escape' => false)); ?></li>
+								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neuer Kunde'), array('controller' => 'customers','action' => 'add'), array('escape' => false)); ?></li>
 								<li>&nbsp;</li>
 								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Rechnungen'), array('controller' => 'bills', 'action' => 'index'), array('escape' => false)); ?> </li>
 								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Rechnung'), array('controller' => 'bills', 'action' => 'add'), array('escape' => false)); ?> </li>
@@ -113,24 +113,28 @@
 	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
 	<thead>
 	<tr>
-		<th><?php echo __('Customer Id'); ?></th>
+		<th><?php echo __('Bill Number'); ?></th>
 		<th><?php echo __('Create Date'); ?></th>
 		<th><?php echo __('Print Date'); ?></th>
 		<th><?php echo __('Paid Date'); ?></th>
-		<th><?php echo __('Bill Type Id'); ?></th>
-		<th><?php echo __('Bill Number'); ?></th>
+		<th><?php echo __('Bill Type'); ?></th>
 		<th class="actions"></th>
 	</tr>
 	<thead>
 	<tbody>
 	<?php foreach ($customer['Bill'] as $bill): ?>
 		<tr>
-			<td><?php echo $bill['customer_id']; ?></td>
+			<td><?php echo $bill['bill_number']; ?></td>
 			<td><?php echo $bill['create_date']; ?></td>
 			<td><?php echo $bill['print_date']; ?></td>
 			<td><?php echo $bill['paid_date']; ?></td>
-			<td><?php echo $bill['bill_type_id']; ?></td>
-			<td><?php echo $bill['bill_number']; ?></td>
+			<td><?php
+				foreach($BillTypes as $billType){
+					if($bill['bill_type_id'] == $billType['BillTypes']['id']){
+						echo $billType['BillTypes']['name'];
+					}
+				}
+			 ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'bills', 'action' => 'view', $bill['id']), array('escape' => false)); ?>
 				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'bills', 'action' => 'edit', $bill['id']), array('escape' => false)); ?>
@@ -143,7 +147,7 @@
 <?php endif; ?>
 
 	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Bill'), array('controller' => 'bills', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
+		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Rechnung'), array('controller' => 'bills', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
 	</div>
 	</div><!-- end col md 12 -->
 </div>

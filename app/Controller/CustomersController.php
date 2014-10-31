@@ -8,6 +8,17 @@ App::uses('AppController', 'Controller');
  */
 class CustomersController extends AppController {
 
+
+/**
+ * beforeFilter function
+ */
+ 
+ public function beforeFilter(){
+ 	parent::beforeFilter();
+	$this->loadModel("BillTypes");
+	$this->set("BillTypes",$this->BillTypes->find("all"));
+ }
+
 /**
  * Components
  *

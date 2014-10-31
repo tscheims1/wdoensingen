@@ -15,8 +15,8 @@
 					<div class="panel-heading">Actions</div>
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Kunden'), array('action' => 'index'), array('escape' => false)); ?></li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neuer Kunde'), array('action' => 'add'), array('escape' => false)); ?></li>
+								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Kunden'), array('controller' => 'customers','action' => 'index'), array('escape' => false)); ?></li>
+								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neuer Kunde'), array('controller' => 'customers','action' => 'add'), array('escape' => false)); ?></li>
 								<li>&nbsp;</li>
 								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Rechnungen'), array('controller' => 'bills', 'action' => 'index'), array('escape' => false)); ?> </li>
 								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Rechnung'), array('controller' => 'bills', 'action' => 'add'), array('escape' => false)); ?> </li>
@@ -99,24 +99,22 @@
 	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
 	<thead>
 	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Bill Id'); ?></th>
+		<th><?php echo __('Amount'); ?></th>
+		<th><?php echo __('Product Number'); ?></th>
 		<th><?php echo __('Description'); ?></th>
 		<th><?php echo __('Price'); ?></th>
 		<th><?php echo __('Vat'); ?></th>
-		<th><?php echo __('Amount'); ?></th>
 		<th class="actions"></th>
 	</tr>
 	<thead>
 	<tbody>
 	<?php foreach ($bill['BillPosition'] as $billPosition): ?>
 		<tr>
-			<td><?php echo $billPosition['id']; ?></td>
-			<td><?php echo $billPosition['bill_id']; ?></td>
+			<td><?php echo $billPosition['amount']; ?></td>
+			<td><?php echo $billPosition['product_number']; ?></td>
 			<td><?php echo $billPosition['description']; ?></td>
 			<td><?php echo $billPosition['price']; ?></td>
 			<td><?php echo $billPosition['vat']; ?></td>
-			<td><?php echo $billPosition['amount']; ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'bill_positions', 'action' => 'view', $billPosition['id']), array('escape' => false)); ?>
 				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'bill_positions', 'action' => 'edit', $billPosition['id']), array('escape' => false)); ?>

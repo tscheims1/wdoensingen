@@ -28,8 +28,38 @@ msgstr "Strasse"
 msgid "Zip"
 msgstr "PLZ"
 
-msgid "city"
+msgid "City"
 msgstr "Stadt"
+
+msgid "Description"
+msgstr "Beschreibung"
+
+msgid "Price"
+msgstr "Preis"
+
+msgid "Catcomplete"
+msgstr "Produktsuche"
+
+msgid "Amount"
+msgstr "Menge"
+
+msgid "Parent"
+msgstr "Übergeordnete Firma"
+
+msgid "Prodid"
+msgstr "Produkt Nummer"
+
+msgid "Product Number"
+msgstr "Produkt Nummer"
+
+msgid "Category"
+msgstr "Firma"
+
+msgid "Submit"
+msgstr "Speichern"
+
+msgid "Vat"
+msgstr "MwSt"
 
 msgid "Phone"
 msgstr "Telefon"
@@ -54,6 +84,9 @@ msgstr "Ausgedruckt am"
 
 msgid "Paid Date"
 msgstr "Bezahlt am"
+
+msgid "New Bill"
+msgstr "Neue Rechnung"
 
 msgid "Bill Number"
 msgstr "Nummer"

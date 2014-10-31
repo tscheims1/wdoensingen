@@ -33,6 +33,10 @@ class BillsController extends AppController {
  	parent::beforeFilter();
 	$this->loadModel("Product");
 	$this->set("Product",$this->Product->find("all"));
+	
+	$this->loadModel("Customer");
+	$this->set("Customer",$this->Customer->find("all"));
+	
  }
 
 

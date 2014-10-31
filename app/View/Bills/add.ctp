@@ -8,14 +8,14 @@
 		</div>
 	</div>
 
-<?php 
+<?php
 	echo $this -> Html -> script('billForm');
 	echo $this -> Html -> script('jqueryui/jquery-ui.min');
 	echo $this -> Html -> css('jqueryui/jquery-ui.min');
 	echo $this -> Html -> css('billForm');
 ?>
 <script type="text/javascript">
-$(document).ready(function(){
+	$(document).ready(function(){
 	// Konfiguriere Widget
 	$.widget("custom.catcomplete", $.ui.autocomplete, {
 		_renderMenu : function(ul, items) {
@@ -38,46 +38,71 @@ $(document).ready(function(){
 	
 	//Products data
 	<?php
-		$str = 'var produkte = [';
-		foreach ($Product as $ware) {
-			$str .= '{ label: "' . $ware['Product']['name'] . '", category:"' . $ware['Category']['name'] . '", uid: "'.$ware['Product']['id'].'", catid: "'.$ware['Product']['category_id'].'", price: "'.$ware['Product']['price'].'"},';
-		}
-		$str = substr($str, 0, -1);
-		$str .= ']';
-		echo $str;
+	$str = 'var produkte = [';
+	foreach ($Product as $ware) {
+		$str .= '{ label: "' . $ware['Product']['name'] . '", category:"' . $ware['Category']['name'] . '", uid: "' . $ware['Product']['id'] . '", catid: "' . $ware['Product']['category_id'] . '", number: "' . $ware['Product']['prodid'] . '", price: "' . $ware['Product']['price'] . '"},';
+	}
+	$str = substr($str, 0, -1);
+	$str .= ']';
+	echo $str;
 	?>
-	// Autocomplete action
-	$("#BillCatcomplete").catcomplete({
-      delay: 0,
-      source: produkte,
-      select: function(event, ui){
-      	var ware = ui.item
-      	var clone = $(".BillPosition .Position:last-child").clone();
-		var counter = parseInt($(".BillPosition .Position:last-child").find("textarea").attr("name").toString().match(/\d+/));
-		counter++;
-		$(clone).find("textarea").attr("name", "data[BillPositions]["+counter+"][BillPosition][description]");
-		$(clone).find("textarea").attr("id", "dataBillPositions"+counter+"BillPositiondescription");
-		$(clone).find("textarea").val(ware.label);
-		
-		$(clone).find("input[name*=price]").attr("name", "data[BillPositions]["+counter+"][BillPosition][price]");
-		$(clone).find("input[name*=price]").attr("id", "dataBillPositions"+counter+"BillPositionPrice");
-		$(clone).find("input[name*=price]").val(ware.price);
-		
-		$(clone).find("input[name*=amount]").attr("name", "data[BillPositions]["+counter+"][BillPosition][amount]");
-		$(clone).find("input[name*=amount]").attr("id", "dataBillPositions"+counter+"BillPositionAmount");
-		$(clone).find("input[name*=amount]").val("1");
-		
-		$(clone).find("input[name*=vat]").attr("name", "data[BillPositions]["+counter+"][BillPosition][vat]");
-		$(clone).find("input[name*=vat]").attr("id", "dataBillPositions"+counter+"BillPositionVat");
-		
-		
-		$(".BillPosition").append(clone);
-      	return false;
-      	
-      }
-    });
-	});
-	
+		// Autocomplete action
+		$("#BillCatcomplete").catcomplete({
+			delay : 0,
+			source : produkte,
+			select : function(event, ui) {
+				var ware = ui.item
+				if ($(".BillPosition .Position:last-child").find("textarea").val() == "") {
+					var clone = $(".BillPosition .Position:last-child");
+					
+					var counter = parseInt($(".BillPosition .Position:last-child").find("textarea").attr("name").toString().match(/\d+/));
+					counter++;
+					$(clone).find("textarea").attr("name", "data[BillPositions][" + counter + "][BillPosition][description]");
+					$(clone).find("textarea").attr("id", "dataBillPositions" + counter + "BillPositiondescription");
+					$(clone).find("textarea").val(ware.label);
+
+					$(clone).find("input[name*=price]").attr("name", "data[BillPositions][" + counter + "][BillPosition][price]");
+					$(clone).find("input[name*=price]").attr("id", "dataBillPositions" + counter + "BillPositionPrice");
+					$(clone).find("input[name*=price]").val(ware.price);
+
+					$(clone).find("input[name*=amount]").attr("name", "data[BillPositions][" + counter + "][BillPosition][amount]");
+					$(clone).find("input[name*=amount]").attr("id", "dataBillPositions" + counter + "BillPositionAmount");
+					$(clone).find("input[name*=amount]").val("1");
+
+					$(clone).find("input[name*=vat]").attr("name", "data[BillPositions][" + counter + "][BillPosition][vat]");
+					$(clone).find("input[name*=vat]").attr("id", "dataBillPositions" + counter + "BillPositionVat");
+
+					$(clone).find("div").last().append('<input type="hidden" name="data[BillPositions][' + counter + '][BillPosition][product_number]" id="dataBillPositions' + counter + 'BillPositionProduct_number" value="' + ware.number + '" />')
+					
+				} else {
+					var clone = $(".BillPosition .Position:last-child").clone();
+
+					var counter = parseInt($(".BillPosition .Position:last-child").find("textarea").attr("name").toString().match(/\d+/));
+					counter++;
+					$(clone).find("textarea").attr("name", "data[BillPositions][" + counter + "][BillPosition][description]");
+					$(clone).find("textarea").attr("id", "dataBillPositions" + counter + "BillPositiondescription");
+					$(clone).find("textarea").val(ware.label);
+
+					$(clone).find("input[name*=price]").attr("name", "data[BillPositions][" + counter + "][BillPosition][price]");
+					$(clone).find("input[name*=price]").attr("id", "dataBillPositions" + counter + "BillPositionPrice");
+					$(clone).find("input[name*=price]").val(ware.price);
+
+					$(clone).find("input[name*=amount]").attr("name", "data[BillPositions][" + counter + "][BillPosition][amount]");
+					$(clone).find("input[name*=amount]").attr("id", "dataBillPositions" + counter + "BillPositionAmount");
+					$(clone).find("input[name*=amount]").val("1");
+
+					$(clone).find("input[name*=vat]").attr("name", "data[BillPositions][" + counter + "][BillPosition][vat]");
+					$(clone).find("input[name*=vat]").attr("id", "dataBillPositions" + counter + "BillPositionVat");
+
+					$(clone).find("div").last().append('<input type="hidden" name="data[BillPositions][' + counter + '][BillPosition][product_number]" id="dataBillPositions' + counter + 'BillPositionProduct_number" value="' + ware.number + '" />')
+
+					$(".BillPosition").append(clone);
+				}
+				return false;
+
+			}
+		});
+		});
 </script>
 	<div class="row">
 		<div class="col-md-3">
@@ -86,17 +111,17 @@ $(document).ready(function(){
 					<div class="panel-heading">Actions</div>
 						<div class="panel-body">
 							<ul class="nav nav-pills nav-stacked">
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Kunden'), array('action' => 'index'), array('escape' => false)); ?></li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neuer Kunde'), array('action' => 'add'), array('escape' => false)); ?></li>
+								<li><?php echo $this -> Html -> link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Kunden'), array('controller' => 'customers', 'action' => 'index'), array('escape' => false)); ?></li>
+								<li><?php echo $this -> Html -> link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neuer Kunde'), array('controller' => 'customers', 'action' => 'add'), array('escape' => false)); ?></li>
 								<li>&nbsp;</li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Rechnungen'), array('controller' => 'bills', 'action' => 'index'), array('escape' => false)); ?> </li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Rechnung'), array('controller' => 'bills', 'action' => 'add'), array('escape' => false)); ?> </li>
+								<li><?php echo $this -> Html -> link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Rechnungen'), array('controller' => 'bills', 'action' => 'index'), array('escape' => false)); ?> </li>
+								<li><?php echo $this -> Html -> link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Rechnung'), array('controller' => 'bills', 'action' => 'add'), array('escape' => false)); ?> </li>
 								<li>&nbsp;</li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Produkte'), array('controller' => 'products', 'action' => 'index'), array('escape' => false)); ?> </li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neues Produkt'), array('controller' => 'products', 'action' => 'add'), array('escape' => false)); ?> </li>
+								<li><?php echo $this -> Html -> link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Produkte'), array('controller' => 'products', 'action' => 'index'), array('escape' => false)); ?> </li>
+								<li><?php echo $this -> Html -> link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neues Produkt'), array('controller' => 'products', 'action' => 'add'), array('escape' => false)); ?> </li>
 								<li>&nbsp;</li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Kategorien'), array('controller' => 'categories', 'action' => 'index'), array('escape' => false)); ?> </li>
-								<li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Produktkategorie'), array('controller' => 'categories', 'action' => 'add'), array('escape' => false)); ?> </li>
+								<li><?php echo $this -> Html -> link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Auflistung Kategorien'), array('controller' => 'categories', 'action' => 'index'), array('escape' => false)); ?> </li>
+								<li><?php echo $this -> Html -> link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Produktkategorie'), array('controller' => 'categories', 'action' => 'add'), array('escape' => false)); ?> </li>
 							</ul>
 						</div>
 					</div>
@@ -138,7 +163,7 @@ $(document).ready(function(){
 								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.price', array('class' => 'form-control', 'placeholder' => 'Price')); ?>
 							</div>
 							<div class="form-group">
-								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.amount', array('class' => 'form-control', 'placeholder' => 'Amount')); ?>
+								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.amount', array('class' => 'form-control', 'placeholder' => 'Amount', 'value' => 1)); ?>
 							</div>
 							<div class="form-group">
 								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.vat', array('class' => 'form-control-chk', 'placeholder' => 'Vat')); ?>
