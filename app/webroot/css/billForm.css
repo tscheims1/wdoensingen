@@ -1,2 +1,2 @@
-.BillPosition .Position:first-child img.calcPositionMinus{ display: none;}
+.BillPosition .Position:first-child span.calcPositionMinus{ display: none;}
 .Position{ height: 220px;}

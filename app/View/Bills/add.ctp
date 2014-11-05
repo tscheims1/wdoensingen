@@ -170,8 +170,8 @@
 							</div>
 						</div>
 						<div style="width: 10%; float: right;">
-							<?php echo $this -> Html -> image('minus.jpg', array('alt' => 'Minus', 'width' => "55px", "class" => "calcPositionMinus")); ?>
-							<?php echo $this -> Html -> image('plus.jpg', array('alt' => 'Plus', 'width' => "50px", "class" => "calcPositionPlus")); ?>
+							<span class="glyphicon glyphicon-plus calcPositionPlus"></span><br />
+							<span class="glyphicon glyphicon-minus calcPositionMinus"></span>
 						</div>
 					</div>
 				</div>

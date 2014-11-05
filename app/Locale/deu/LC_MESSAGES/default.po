@@ -65,7 +65,7 @@ msgid "Phone"
 msgstr "Telefon"
 
 msgid "Mobile"
-msgstr "Mobil Telefon"
+msgstr "Natel Mann"
 
 msgid "Customers"
 msgstr "Kunden"
@@ -93,4 +93,13 @@ msgstr "Nummer"
 
 msgid "Bill Type"
 msgstr "Rechnungsart"
+
+msgid "Mobile Woman"
+msgstr "Natel Frau"
+
+msgid "Mobile Man"
+msgstr "Natel Mann"
+
+msgid "Phone Bussiness"
+msgstr "Telefon Geschäft"
 

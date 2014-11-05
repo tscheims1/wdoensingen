@@ -9,6 +9,14 @@ App::uses('AppController', 'Controller');
 class BillPositionsController extends AppController {
 
 /**
+ * Helpers
+ * 
+ * @var aray
+ */
+public $helpers = array('Price');
+
+
+/**
  * Components
  *
  * @var array

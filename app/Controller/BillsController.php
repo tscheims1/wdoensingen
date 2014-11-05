@@ -8,6 +8,14 @@ App::uses('AppController', 'Controller');
  */
 class BillsController extends AppController {
 
+
+/**
+ * Helpers
+ * 
+ * @var aray
+ */
+public $helpers = array('Price');
+
 /**
  * Components
  *
@@ -36,7 +44,6 @@ class BillsController extends AppController {
 	
 	$this->loadModel("Customer");
 	$this->set("Customer",$this->Customer->find("all"));
-	
  }
 
 
@@ -53,6 +60,18 @@ class BillsController extends AppController {
 		}
 		$options = array('conditions' => array('Bill.' . $this->Bill->primaryKey => $id));
 		$this->set('bill', $this->Bill->find('first', $options));
+	}
+	
+	
+/**
+ * view method
+ *
+ * @throws NotFoundException
+ * @return void
+ */
+	public function search() {
+		$options = array("bill_number LIKE" => "%".$this->request->data['Bills']['search']."%");
+		$this->set('bills', $this->Paginator->paginate($options));
 	}
 
 /**

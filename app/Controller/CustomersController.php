@@ -50,6 +50,18 @@ class CustomersController extends AppController {
 		$options = array('conditions' => array('Customer.' . $this->Customer->primaryKey => $id));
 		$this->set('customer', $this->Customer->find('first', $options));
 	}
+	
+/**
+ * search method
+ *
+ * @throws NotFoundException
+ * @param array $params
+ * @return void
+ */
+	public function search() {
+		$options = array("firstname LIKE" => "%".$this->request->data['Customers']['search']."%");
+		$this->set('customers', $this->Paginator->paginate($options));
+	}
 
 /**
  * add method

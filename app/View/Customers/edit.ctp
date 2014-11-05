@@ -61,7 +61,13 @@
 					<?php echo $this->Form->input('phone', array('class' => 'form-control', 'placeholder' => 'Phone'));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('mobile', array('class' => 'form-control', 'placeholder' => 'Mobile'));?>
+					<?php echo $this->Form->input('phone_bussiness', array('class' => 'form-control', 'placeholder' => 'Phone Bussiness'));?>
+				</div>
+				<div class="form-group">
+					<?php echo $this->Form->input('mobile', array('class' => 'form-control', 'placeholder' => 'Mobile Man'));?>
+				</div>
+				<div class="form-group">
+					<?php echo $this->Form->input('mobile_woman', array('class' => 'form-control', 'placeholder' => 'Mobile Woman'));?>
 				</div>
 				<div class="form-group">
 					<?php echo $this->Form->input('email', array('class' => 'form-control', 'placeholder' => 'Email'));?>

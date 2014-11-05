@@ -102,19 +102,30 @@
 		<th><?php echo __('Amount'); ?></th>
 		<th><?php echo __('Product Number'); ?></th>
 		<th><?php echo __('Description'); ?></th>
-		<th><?php echo __('Price'); ?></th>
 		<th><?php echo __('Vat'); ?></th>
+		<th><?php echo __('Price'); ?></th>
 		<th class="actions"></th>
 	</tr>
 	<thead>
 	<tbody>
+		<?php
+		$mwstTot = 0;
+		$preisTot = 0;
+		?>
 	<?php foreach ($bill['BillPosition'] as $billPosition): ?>
+		<?php
+			if($billPosition['vat'] == 1){
+				$mwstTot += $billPosition['price']*0.08;
+			}
+			$preisTot += $billPosition['price'];
+		
+		?>
 		<tr>
 			<td><?php echo $billPosition['amount']; ?></td>
 			<td><?php echo $billPosition['product_number']; ?></td>
 			<td><?php echo $billPosition['description']; ?></td>
-			<td><?php echo $billPosition['price']; ?></td>
-			<td><?php echo $billPosition['vat']; ?></td>
+			<td><?php echo ($billPosition['vat'] == 1 ? "Ja" : "Nein"); ?></td>
+			<td><?php echo "Fr. ".$this->Price->roundTo($billPosition['price']); ?></td>
 			<td class="actions">
 				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'bill_positions', 'action' => 'view', $billPosition['id']), array('escape' => false)); ?>
 				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'bill_positions', 'action' => 'edit', $billPosition['id']), array('escape' => false)); ?>
@@ -122,12 +133,21 @@
 			</td>
 		</tr>
 	<?php endforeach; ?>
+	
+		<tr style="border-top: 2px solid black;">
+			<td colspan="4">Mehrwertsteuer</td>
+			<td colspan="3"><?php echo "Fr. ".$this->Price->roundTo($mwstTot); ?></td>
+		</tr>
+		<tr>
+			<td colspan="4">Preis total</td>
+			<td colspan="3"><?php echo "Fr. ".$this->Price->roundTo($mwstTot+$preisTot); ?></td>
+		</tr>
 	</tbody>
 	</table>
 <?php endif; ?>
 
 	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Bill Position'), array('controller' => 'bill_positions', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
+		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Produkt / Dienstleistung hinzufügen'), array('controller' => 'bill_positions', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
 	</div>
 	</div><!-- end col md 12 -->
 </div>

@@ -34,12 +34,21 @@
 				</div><!-- end panel -->
 			</div><!-- end actions -->
 		</div><!-- end col md 3 -->
-
+		<div class="col-md-9">
+			<?php echo $this->Form->create("Products",array('action' => 'search')); ?>
+			<table cellpadding="0" cellspacing="0" class="table table-striped">
+				<tr>
+					<td><?php echo $this->Form->input("search", array('label' => 'Search for')); ?></td>
+				</tr>
+				<tr>
+					<td><?php echo $this->Form->end("Search");?></td>
+				</tr>
+			</table>
+		</div>
 		<div class="col-md-9">
 			<table cellpadding="0" cellspacing="0" class="table table-striped">
 				<thead>
 					<tr>
-						<th><?php echo $this->Paginator->sort('id'); ?></th>
 						<th><?php echo $this->Paginator->sort('prodid'); ?></th>
 						<th><?php echo $this->Paginator->sort('name'); ?></th>
 						<th><?php echo $this->Paginator->sort('description'); ?></th>
@@ -51,14 +60,13 @@
 				<tbody>
 				<?php foreach ($products as $product): ?>
 					<tr>
-						<td><?php echo h($product['Product']['id']); ?>&nbsp;</td>
 						<td><?php echo h($product['Product']['prodid']); ?>&nbsp;</td>
 						<td><?php echo h($product['Product']['name']); ?>&nbsp;</td>
 						<td><?php echo h($product['Product']['description']); ?>&nbsp;</td>
 								<td>
 			<?php echo $this->Html->link($product['Category']['name'], array('controller' => 'categories', 'action' => 'view', $product['Category']['id'])); ?>
 		</td>
-						<td><?php echo h($product['Product']['price']); ?>&nbsp;</td>
+						<td><?php echo "Fr. ".$this->Price->roundTo(h($product['Product']['price'])); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $product['Product']['id']), array('escape' => false)); ?>
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $product['Product']['id']), array('escape' => false)); ?>

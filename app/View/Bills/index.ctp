@@ -34,7 +34,17 @@
 				</div><!-- end panel -->
 			</div><!-- end actions -->
 		</div><!-- end col md 3 -->
-
+		<div class="col-md-9">
+			<?php echo $this->Form->create("Bills",array('action' => 'search')); ?>
+			<table cellpadding="0" cellspacing="0" class="table table-striped">
+				<tr>
+					<td><?php echo $this->Form->input("search", array('label' => 'Search for')); ?></td>
+				</tr>
+				<tr>
+					<td><?php echo $this->Form->end("Search");?></td>
+				</tr>
+			</table>
+		</div>
 		<div class="col-md-9">
 			<table cellpadding="0" cellspacing="0" class="table table-striped">
 				<thead>

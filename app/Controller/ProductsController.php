@@ -9,6 +9,14 @@ App::uses('AppController', 'Controller');
 class ProductsController extends AppController {
 
 /**
+ * Helpers
+ * 
+ * @var aray
+ */
+public $helpers = array('Price');
+
+
+/**
  * Components
  *
  * @var array
@@ -38,6 +46,18 @@ class ProductsController extends AppController {
 		}
 		$options = array('conditions' => array('Product.' . $this->Product->primaryKey => $id));
 		$this->set('product', $this->Product->find('first', $options));
+	}
+	
+/**
+ * search method
+ *
+ * @throws NotFoundException
+ * @param array $params
+ * @return void
+ */
+	public function search() {
+		$options = array("Product.name LIKE" => "%".$this->request->data['Products']['search']."%");
+		$this->set('products', $this->Paginator->paginate($options));
 	}
 
 /**

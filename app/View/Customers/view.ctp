@@ -85,9 +85,23 @@
 		</td>
 </tr>
 <tr>
-		<th><?php echo __('Mobile'); ?></th>
+		<th><?php echo __('Phone Bussiness'); ?></th>
+		<td>
+			<?php echo h($customer['Customer']['phone_bussiness']); ?>
+			&nbsp;
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Mobile Man'); ?></th>
 		<td>
 			<?php echo h($customer['Customer']['mobile']); ?>
+			&nbsp;
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Mobile Woman'); ?></th>
+		<td>
+			<?php echo h($customer['Customer']['mobile_woman']); ?>
 			&nbsp;
 		</td>
 </tr>

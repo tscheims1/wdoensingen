@@ -35,13 +35,6 @@
 		<div class="col-md-9">			
 			<table cellpadding="0" cellspacing="0" class="table table-striped">
 				<tbody>
-				<tr>
-		<th><?php echo __('Id'); ?></th>
-		<td>
-			<?php echo h($product['Product']['id']); ?>
-			&nbsp;
-		</td>
-</tr>
 <tr>
 		<th><?php echo __('Produkt Nummer'); ?></th>
 		<td>
@@ -73,9 +66,12 @@
 <tr>
 		<th><?php echo __('Price'); ?></th>
 		<td>
-			<?php echo h($product['Product']['price']); ?>
+			<?php echo "Fr. ".$this->Price->roundTo(h($product['Product']['price'])); ?>
 			&nbsp;
 		</td>
+</tr>
+<tr>
+	<td colspan="2"><a href="javascript:history.back();">Zur&uuml;ck</a></td>
 </tr>
 				</tbody>
 			</table>
