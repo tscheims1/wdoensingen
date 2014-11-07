@@ -158,17 +158,5 @@ if($bill['Bill']['bill_type_id'] == 6){
 		}
 	?>
 </div>
-
-<div class="footer" style="text-align: center; font-size: 10px; border-top: 1px solid #ccc; padding-top: 5px; position: fixed; bottom: 0;"> 
-			WD Oensingen AG &bull; 
-			Inhaber Ernst Baschung &bull; 
-			Solothurnstrasse 74 &bull;
-			 4702 Oensingen &bull; 
-			 062 396 22 88 &bull; 
-			 wdoensingen.ch 
-			 PC Konto 46-322-3 &bull; 
-			 MWST Nr. CHE-103.313.269
-			</div>
-</div>	
 	</body>
 </html>

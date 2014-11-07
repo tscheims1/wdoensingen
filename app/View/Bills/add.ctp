@@ -131,7 +131,7 @@
 			<?php echo $this -> Form -> create('Bill', array('role' => 'form')); ?>
 
 				<div class="form-group">
-					<?php echo $this -> Form -> input('customer_id', array('class' => 'form-control', 'placeholder' => 'Customer Id')); ?>
+					<?php echo $this -> Form -> input('customer_id', array('class' => 'form-control', 'placeholder' => 'Customer Id', 'default' => $customerid)); ?>
 				</div>
 				<div class="form-group">
 					<?php echo $this -> Form -> input('bill_type_id', array('class' => 'form-control', 'placeholder' => 'Bill Type Id')); ?>

@@ -103,9 +103,10 @@ public $helpers = array('Price');
 				$this->Session->setFlash(__('The bill could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
+		$customerid = $this->request->params['named']['customerid']; 
 		$customers = $this->Bill->Customer->find('list');
 		$billTypes = $this->Bill->BillType->find('list');
-		$this->set(compact('customers', 'billTypes'));
+		$this->set(compact('customers', 'billTypes', 'customerid'));
 	}
 
 /**
@@ -166,8 +167,8 @@ public $helpers = array('Price');
 	public function pdfExport($id =null)
 	{
 		$this->layout ="pdf";
-		App::uses('TCPDF', 'Lib/tcpdf');
-		$pdf = new TCPDF();
+		App::uses('OWNTCPDF', 'Lib/tcpdf');
+		$pdf = new OWNTCPDF();
 		$pdf->addPage();
 		$bill = $this->Bill->find('first',array('conditions'=> array('Bill.id' => $id)));
 		$dateTime = new DateTime("now");

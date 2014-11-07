@@ -161,7 +161,7 @@
 <?php endif; ?>
 
 	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Rechnung'), array('controller' => 'bills', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
+		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Neue Rechnung'), array('controller' => 'bills', 'action' => 'add', 'customerid' => $customer['Customer']['id']), array('escape' => false, 'class' => 'btn btn-default')); ?> 
 	</div>
 	</div><!-- end col md 12 -->
 </div>
