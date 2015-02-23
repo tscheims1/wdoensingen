@@ -37,40 +37,37 @@
 			<?php echo $this->Form->create('Customer', array('role' => 'form')); ?>
 
 				<div class="form-group">
-					<?php echo $this->Form->input('id', array('class' => 'form-control', 'placeholder' => 'Id'));?>
+					<?php echo $this->Form->input('title', array('class' => 'form-control', 'placeholder' => __('Title')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('title', array('class' => 'form-control', 'placeholder' => 'Title'));?>
+					<?php echo $this->Form->input('firstname', array('class' => 'form-control', 'placeholder' => __('Firstname')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('firstname', array('class' => 'form-control', 'placeholder' => 'Firstname'));?>
+					<?php echo $this->Form->input('lastname', array('class' => 'form-control', 'placeholder' => __('Lastname')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('lastname', array('class' => 'form-control', 'placeholder' => 'Lastname'));?>
+					<?php echo $this->Form->input('street', array('class' => 'form-control', 'placeholder' => __('Street')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('street', array('class' => 'form-control', 'placeholder' => 'Street'));?>
+					<?php echo $this->Form->input('zip', array('class' => 'form-control', 'placeholder' => __('Zip')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('zip', array('class' => 'form-control', 'placeholder' => 'Zip'));?>
+					<?php echo $this->Form->input('city', array('class' => 'form-control', 'placeholder' => __('City')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('city', array('class' => 'form-control', 'placeholder' => 'City'));?>
+					<?php echo $this->Form->input('phone', array('class' => 'form-control', 'placeholder' => __('Phone')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('phone', array('class' => 'form-control', 'placeholder' => 'Phone'));?>
+					<?php echo $this->Form->input('phone_bussiness', array('class' => 'form-control', 'placeholder' => __('Phone Bussiness')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('phone_bussiness', array('class' => 'form-control', 'placeholder' => 'Phone Bussiness'));?>
+					<?php echo $this->Form->input('mobile', array('class' => 'form-control', 'placeholder' => __('Mobile Man')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('mobile', array('class' => 'form-control', 'placeholder' => 'Mobile Man'));?>
+					<?php echo $this->Form->input('mobile_woman', array('class' => 'form-control', 'placeholder' => __('Mobile Woman')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('mobile_woman', array('class' => 'form-control', 'placeholder' => 'Mobile Woman'));?>
-				</div>
-				<div class="form-group">
-					<?php echo $this->Form->input('email', array('class' => 'form-control', 'placeholder' => 'Email'));?>
+					<?php echo $this->Form->input('email', array('class' => 'form-control', 'placeholder' => __('Email')));?>
 				</div>
 				<div class="form-group">
 					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-default')); ?>

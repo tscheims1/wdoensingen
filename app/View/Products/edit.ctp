@@ -37,22 +37,19 @@
 			<?php echo $this->Form->create('Product', array('role' => 'form')); ?>
 
 				<div class="form-group">
-					<?php echo $this->Form->input('id', array('class' => 'form-control', 'placeholder' => 'Id'));?>
+					<?php echo $this->Form->input('prodid', array('class' => 'form-control', 'placeholder' => __('Produkt Nummer')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('prodid', array('class' => 'form-control', 'placeholder' => 'Produkt Nummer'));?>
+					<?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => __('Name')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('name', array('class' => 'form-control', 'placeholder' => 'Name'));?>
+					<?php echo $this->Form->input('description', array('class' => 'form-control', 'placeholder' => __('Description')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('description', array('class' => 'form-control', 'placeholder' => 'Description'));?>
+					<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'options' => $categories, 'placeholder' => __('Category Id')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('category_id', array('class' => 'form-control', 'placeholder' => 'Category Id'));?>
-				</div>
-				<div class="form-group">
-					<?php echo $this->Form->input('price', array('class' => 'form-control', 'placeholder' => 'Price'));?>
+					<?php echo $this->Form->input('price', array('class' => 'form-control', 'placeholder' => __('Price')));?>
 				</div>
 				<div class="form-group">
 					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-default')); ?>

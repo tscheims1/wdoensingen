@@ -9,6 +9,8 @@ App::uses('AppModel', 'Model');
  */
 class Bill extends AppModel {
 
+	public $displayField = "bill_number";
+
 /**
  * Validation rules
  *

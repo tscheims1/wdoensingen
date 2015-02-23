@@ -112,6 +112,14 @@
 			&nbsp;
 		</td>
 </tr>
+<tr>
+	<th>
+		<?php echo __('Edit Customer') ?>
+	</th>
+	<td>
+		<?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $customer['Customer']['id']), array('escape' => false)); ?>
+	</td>
+</tr>
 				</tbody>
 			</table>
 

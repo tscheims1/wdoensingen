@@ -54,11 +54,7 @@
 						<th><?php echo $this->Paginator->sort('title'); ?></th>
 						<th><?php echo $this->Paginator->sort('firstname'); ?></th>
 						<th><?php echo $this->Paginator->sort('lastname'); ?></th>
-						<th><?php echo $this->Paginator->sort('street'); ?></th>
-						<th><?php echo $this->Paginator->sort('zip'); ?></th>
-						<th><?php echo $this->Paginator->sort('city'); ?></th>
 						<th><?php echo $this->Paginator->sort('phone'); ?></th>
-						<th><?php echo $this->Paginator->sort('mobile'); ?></th>
 						<th><?php echo $this->Paginator->sort('email'); ?></th>
 						<th class="actions"></th>
 					</tr>
@@ -67,13 +63,9 @@
 				<?php foreach ($customers as $customer): ?>
 					<tr>
 						<td><?php echo h($customer['Customer']['title']); ?>&nbsp;</td>
-						<td><?php echo h($customer['Customer']['firstname']); ?>&nbsp;</td>
-						<td><?php echo h($customer['Customer']['lastname']); ?>&nbsp;</td>
-						<td><?php echo h($customer['Customer']['street']); ?>&nbsp;</td>
-						<td><?php echo h($customer['Customer']['zip']); ?>&nbsp;</td>
-						<td><?php echo h($customer['Customer']['city']); ?>&nbsp;</td>
+						<td><?php echo $this->Html->link($customer['Customer']['firstname'], array('action' => 'view', $customer['Customer']['id']), array('escape' => false)); ?>&nbsp;</td>
+						<td><?php echo $this->Html->link($customer['Customer']['lastname'], array('action' => 'view', $customer['Customer']['id']), array('escape' => false)); ?>&nbsp;</td>
 						<td><?php echo h($customer['Customer']['phone']); ?>&nbsp;</td>
-						<td><?php echo h($customer['Customer']['mobile']); ?>&nbsp;</td>
 						<td><?php echo h($customer['Customer']['email']); ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $customer['Customer']['id']), array('escape' => false)); ?>

@@ -37,22 +37,25 @@
 			<?php echo $this->Form->create('BillPosition', array('role' => 'form')); ?>
 
 				<div class="form-group">
-					<?php echo $this->Form->input('id', array('class' => 'form-control', 'placeholder' => 'Id'));?>
+					<?php echo $this->Form->input('id', array('class' => 'form-control', 'placeholder' => __('Id')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('bill_id', array('class' => 'form-control', 'placeholder' => 'Bill Id'));?>
+					<?php echo $this->Form->input('bill_id', array('class' => 'form-control', 'placeholder' => __('Bill Id')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('description', array('class' => 'form-control', 'placeholder' => 'Description'));?>
+					<?php echo $this->Form->input('description', array('class' => 'form-control', 'placeholder' => __('Description')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('price', array('class' => 'form-control', 'placeholder' => 'Price'));?>
+					<?php echo $this->Form->input('price', array('class' => 'form-control', 'placeholder' => __('Price')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('vat', array('class' => 'form-control', 'placeholder' => 'Vat'));?>
+					<?php echo $this->Form->input('kulanz', array('class' => 'form-control-chk', 'placeholder' => __('Vat')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('amount', array('class' => 'form-control', 'placeholder' => 'Amount'));?>
+					<?php echo $this->Form->input('vat', array('class' => 'form-control-chk', 'placeholder' => __('Vat')));?>
+				</div>
+				<div class="form-group">
+					<?php echo $this->Form->input('amount', array('class' => 'form-control', 'placeholder' => __('Amount')));?>
 				</div>
 				<div class="form-group">
 					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-default')); ?>

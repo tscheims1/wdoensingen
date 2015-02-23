@@ -6,7 +6,12 @@
 			</div>
 		</div>
 	</div>
-
+<?php
+	echo $this -> Html -> script('billForm');
+	echo $this -> Html -> script('jqueryui/jquery-ui.min');
+	echo $this -> Html -> css('jqueryui/jquery-ui.min');
+	echo $this -> Html -> css('billForm');
+?>
 	<div class="row">
 
 		<div class="col-md-3">
@@ -35,17 +40,17 @@
 		<div class="col-md-9">			
 			<table cellpadding="0" cellspacing="0" class="table table-striped">
 				<tbody>
-				<tr>
-		<th><?php echo __('Id'); ?></th>
+<tr>
+		<th><?php echo __('Bill Number'); ?></th>
 		<td>
-			<?php echo h($bill['Bill']['id']); ?>
+			<?php echo h($bill['Bill']['bill_number']); ?>
 			&nbsp;
 		</td>
 </tr>
 <tr>
 		<th><?php echo __('Customer'); ?></th>
 		<td>
-			<?php echo $this->Html->link($bill['Customer']['title'], array('controller' => 'customers', 'action' => 'view', $bill['Customer']['id'])); ?>
+			<?php echo $this->Html->link($bill['Customer']['firstname']." ".$bill['Customer']['lastname'], array('controller' => 'customers', 'action' => 'view', $bill['Customer']['id'])); ?>
 			&nbsp;
 		</td>
 </tr>
@@ -78,11 +83,62 @@
 		</td>
 </tr>
 <tr>
-		<th><?php echo __('Bill Number'); ?></th>
-		<td>
-			<?php echo h($bill['Bill']['bill_number']); ?>
+	<th>
+		<?php echo __('Offerte Titel') ?>
+	</th>
+	<td>
+		<?php echo h($bill['Bill']['offerte_titel']); ?>
 			&nbsp;
-		</td>
+	</td>
+</tr>
+<tr>
+	<th>
+		<?php echo __('Offerte Text') ?>
+	</th>
+	<td>
+		<?php echo h($bill['Bill']['offerte_text']); ?>
+			&nbsp;
+	</td>
+</tr>
+<tr>
+	<th>
+		<?php echo __('Bauseits') ?>
+	</th>
+	<td>
+		<?php echo h($bill['Bill']['text_bauseits']); ?>
+			&nbsp;
+	</td>
+</tr>
+<tr>
+	<th>
+		<?php echo __('Konditionen') ?>
+	</th>
+	<td>
+		<?php echo h($bill['Bill']['text_konditionen']); ?>
+			&nbsp;
+	</td>
+</tr>
+<tr>
+	<th>
+		<?php echo __('Lieferfrist') ?>
+	</th>
+	<td>
+		<?php echo h($bill['Bill']['text_lieferfrist']); ?>
+			&nbsp;
+	</td>
+</tr>
+<tr>
+	<th>
+		<?php echo __('Products Warranty') ?>
+	</th>
+	<td>
+		<?php echo h($bill['Bill']['text_garantie']); ?>
+			&nbsp;
+	</td>
+</tr>
+<tr>
+	<th><?php echo __('Print') ?></th>
+	<td><?php echo $this->Html->link('<span class="glyphicon glyphicon-download-alt"></span>', array('action' => 'pdfExport', $bill['Bill']['id']), array('escape' => false)); ?></td>
 </tr>
 				</tbody>
 			</table>
@@ -147,7 +203,7 @@
 <?php endif; ?>
 
 	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Produkt / Dienstleistung hinzufügen'), array('controller' => 'bill_positions', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
+		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Produkt / Dienstleistung hinzufügen'), array('controller' => 'bill_positions', 'action' => 'add', 'billid' => $bill['Bill']['id']), array('escape' => false, 'class' => 'btn btn-default')); ?> 
 	</div>
 	</div><!-- end col md 12 -->
 </div>

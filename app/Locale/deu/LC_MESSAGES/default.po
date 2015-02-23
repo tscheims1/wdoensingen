@@ -1,4 +1,4 @@
-msgid ""
+	msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2014-10-28 19:52+0100\n"
@@ -12,6 +12,45 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "Language: de_DE\n"
+
+msgid "Add Bill"
+msgstr "Rechnung hinzufügen"
+
+msgid "Add Customer"
+msgstr "Kunde hinzufügen"
+
+msgid "Bills"
+msgstr "Rechnungen"
+
+msgid "Search Products"
+msgstr "Produkte suchen"
+
+msgid "Edit Bill"
+msgstr "Rechnung bearbeiten"
+
+msgid "Products"
+msgstr "Produkte"
+
+msgid "Product"
+msgstr "Produkt"
+
+msgid "Add Product"
+msgstr "Produkt hinzufügen"
+
+msgid "Categories"
+msgstr "Kategorien"
+
+msgid "Category"
+msgstr "Kategorie"
+
+msgid "Add Category"
+msgstr "Kategorie hinzufügen"
+
+msgid "Edit Category"
+msgstr "Kategorie bearbeiten"
+
+msgid "Title"
+msgstr "Anrede"
 
 msgid "Title"
 msgstr "Anrede"
@@ -103,3 +142,14 @@ msgstr "Natel Mann"
 msgid "Phone Bussiness"
 msgstr "Telefon Geschäft"
 
+msgid "Related Bill Positions"
+msgstr "Rechnungsteile"
+
+msgid "Print"
+msgstr "Drucken"
+
+msgid "Edit Customer"
+msgstr "Kunde bearbeiten"
+
+msgid "Related Bills"
+msgstr "Rechnungen dieser Person"

@@ -38,7 +38,7 @@
 			<?php echo $this->Form->create("Bills",array('action' => 'search')); ?>
 			<table cellpadding="0" cellspacing="0" class="table table-striped">
 				<tr>
-					<td><?php echo $this->Form->input("search", array('label' => 'Search for')); ?></td>
+					<td><?php echo $this->Form->input("search", array('label' => 'Nach Rechnungsnummer Suchen  ')); ?></td>
 				</tr>
 				<tr>
 					<td><?php echo $this->Form->end("Search");?></td>
@@ -61,16 +61,19 @@
 				<tbody>
 				<?php foreach ($bills as $bill): ?>
 					<tr>
-						<td><?php echo h($bill['Bill']['bill_number']); ?>&nbsp;</td>
+						<td><?php echo $this->Html->link(h($bill['Bill']['bill_number']), array('action' => 'view', $bill['Bill']['id']), array('escape' => false)); ?>&nbsp;</td>
 						<td>
 						<?php echo $this->Html->link($bill['Customer']['firstname']." ".$bill['Customer']['lastname'], array('controller' => 'customers', 'action' => 'view', $bill['Customer']['id'])); ?>
 						</td>
 						<td><?php echo h($bill['Bill']['create_date']); ?>&nbsp;</td>
 						<td><?php echo h($bill['Bill']['print_date']); ?>&nbsp;</td>
-						<td><?php echo h($bill['Bill']['paid_date']); ?>&nbsp;</td>
-								<td>
-			<?php echo $this->Html->link($bill['BillType']['name'], array('controller' => 'bill_types', 'action' => 'view', $bill['BillType']['id'])); ?>
-		</td>
+						<td><?php echo h($bill['Bill']['paid_date']); ?>&nbsp;
+							<?php if($bill['Bill']['paid_date'] == 0){
+								echo $this->Html->link('<span class="glyphicon glyphicon-ok-sign"></span>', array('action' => 'setPaidDate', $bill['Bill']['id']), array('escape' => false));
+							}
+							?>
+						</td>
+						<td><?php echo h($bill['BillType']['name']) ?>&nbsp;</td>
 						<td class="actions">
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $bill['Bill']['id']), array('escape' => false)); ?>
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-download-alt"></span>', array('action' => 'pdfExport', $bill['Bill']['id']), array('escape' => false)); ?>

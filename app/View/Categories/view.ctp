@@ -63,42 +63,6 @@
 
 	</div>
 </div>
-
-<div class="related row">
-	<div class="col-md-12">
-	<h3><?php echo __('Related Categories'); ?></h3>
-	<?php if (!empty($category['ChildCategory'])): ?>
-	<table cellpadding = "0" cellspacing = "0" class="table table-striped">
-	<thead>
-	<tr>
-		<th><?php echo __('Id'); ?></th>
-		<th><?php echo __('Name'); ?></th>
-		<th><?php echo __('Parent Id'); ?></th>
-		<th class="actions"></th>
-	</tr>
-	<thead>
-	<tbody>
-	<?php foreach ($category['ChildCategory'] as $childCategory): ?>
-		<tr>
-			<td><?php echo $childCategory['id']; ?></td>
-			<td><?php echo $childCategory['name']; ?></td>
-			<td><?php echo $childCategory['parent_id']; ?></td>
-			<td class="actions">
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-search"></span>'), array('controller' => 'categories', 'action' => 'view', $childCategory['id']), array('escape' => false)); ?>
-				<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-edit"></span>'), array('controller' => 'categories', 'action' => 'edit', $childCategory['id']), array('escape' => false)); ?>
-				<?php echo $this->Form->postLink(__('<span class="glyphicon glyphicon-remove"></span>'), array('controller' => 'categories', 'action' => 'delete', $childCategory['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $childCategory['id'])); ?>
-			</td>
-		</tr>
-	<?php endforeach; ?>
-	</tbody>
-	</table>
-<?php endif; ?>
-
-	<div class="actions">
-		<?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Child Category'), array('controller' => 'categories', 'action' => 'add'), array('escape' => false, 'class' => 'btn btn-default')); ?> 
-	</div>
-	</div><!-- end col md 12 -->
-</div>
 <div class="related row">
 	<div class="col-md-12">
 	<h3><?php echo __('Related Products'); ?></h3>

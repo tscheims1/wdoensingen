@@ -35,17 +35,10 @@
 		<div class="col-md-9">			
 			<table cellpadding="0" cellspacing="0" class="table table-striped">
 				<tbody>
-				<tr>
-		<th><?php echo __('Id'); ?></th>
-		<td>
-			<?php echo h($billPosition['BillPosition']['id']); ?>
-			&nbsp;
-		</td>
-</tr>
 <tr>
 		<th><?php echo __('Bill'); ?></th>
 		<td>
-			<?php echo $this->Html->link($billPosition['Bill']['id'], array('controller' => 'bills', 'action' => 'view', $billPosition['Bill']['id'])); ?>
+			<?php echo $this->Html->link($billPosition['Bill']['bill_number'], array('controller' => 'bills', 'action' => 'view', $billPosition['Bill']['id'])); ?>
 			&nbsp;
 		</td>
 </tr>
@@ -60,6 +53,13 @@
 		<th><?php echo __('Price'); ?></th>
 		<td>
 			<?php echo h($billPosition['BillPosition']['price']); ?>
+			&nbsp;
+		</td>
+</tr>
+<tr>
+		<th><?php echo __('Kulanz'); ?></th>
+		<td>
+			<?php echo h($billPosition['BillPosition']['kulanz']); ?>
 			&nbsp;
 		</td>
 </tr>

@@ -60,8 +60,8 @@
 				<tbody>
 				<?php foreach ($products as $product): ?>
 					<tr>
-						<td><?php echo h($product['Product']['prodid']); ?>&nbsp;</td>
-						<td><?php echo h($product['Product']['name']); ?>&nbsp;</td>
+						<td><?php echo $this->Html->link($product['Product']['prodid'], array('action' => 'view', $product['Product']['id'])); ?>&nbsp;</td>
+						<td><?php echo $this->Html->link($product['Product']['name'], array('action' => 'view', $product['Product']['id'])); ?>&nbsp;</td>
 						<td><?php echo h($product['Product']['description']); ?>&nbsp;</td>
 								<td>
 			<?php echo $this->Html->link($product['Category']['name'], array('controller' => 'categories', 'action' => 'view', $product['Category']['id'])); ?>

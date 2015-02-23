@@ -71,6 +71,14 @@
 		</td>
 </tr>
 <tr>
+	<th>
+		<?php echo __('Edit Product') ?>
+	</th>
+	<td>
+		<?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $product['Product']['id']), array('escape' => false)); ?>
+	</td>
+</tr>
+<tr>
 	<td colspan="2"><a href="javascript:history.back();">Zur&uuml;ck</a></td>
 </tr>
 				</tbody>

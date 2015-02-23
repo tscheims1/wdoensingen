@@ -68,6 +68,10 @@
 					$(clone).find("input[name*=amount]").attr("name", "data[BillPositions][" + counter + "][BillPosition][amount]");
 					$(clone).find("input[name*=amount]").attr("id", "dataBillPositions" + counter + "BillPositionAmount");
 					$(clone).find("input[name*=amount]").val("1");
+					
+					$(clone).find("input[name*=kulanz]").attr("name", "data[BillPositions][" + counter + "][BillPosition][kulanz]");
+					$(clone).find("input[name*=kulanz]").attr("id", "dataBillPositions" + counter + "BillPositionAmount");
+					$(clone).find("input[name*=kulanz]").val("0");
 
 					$(clone).find("input[name*=vat]").attr("name", "data[BillPositions][" + counter + "][BillPosition][vat]");
 					$(clone).find("input[name*=vat]").attr("id", "dataBillPositions" + counter + "BillPositionVat");
@@ -131,42 +135,51 @@
 			<?php echo $this -> Form -> create('Bill', array('role' => 'form')); ?>
 
 				<div class="form-group">
-					<?php echo $this -> Form -> input('customer_id', array('class' => 'form-control', 'placeholder' => 'Customer Id', 'default' => $customerid)); ?>
+					<?php echo $this -> Form -> input('customer_id', array('class' => 'form-control', 'placeholder' => __('Customer Id'), 'default' => $customerid)); ?>
 				</div>
 				<div class="form-group">
-					<?php echo $this -> Form -> input('bill_type_id', array('class' => 'form-control', 'placeholder' => 'Bill Type Id')); ?>
+					<?php echo $this -> Form -> input('bill_type_id', array('class' => 'form-control', 'placeholder' => __('Bill Type Id'))); ?>
 				<div class="offerteInputs" style="display: none;">
-					<?php echo $this -> Form -> input('offerte_titel', array('class' => 'form-control', 'placeholder' => 'Offerte Titel')); ?>
-					<?php echo $this -> Form -> input('offerte_text', array('class' => 'form-control', 'placeholder' => 'Offerte Text')); ?>
-					<?php echo $this -> Form -> input('text_bauseits', array('class' => 'form-control', 'placeholder' => 'Bauseits')); ?>
-					<?php echo $this -> Form -> input('text_konditionen', array('class' => 'form-control', 'placeholder' => 'Konditionen')); ?>
-					<?php echo $this -> Form -> input('text_lieferfrist', array('class' => 'form-control', 'placeholder' => 'Lieferfrist')); ?>
+					<?php echo $this -> Form -> input('offerte_titel', array('class' => 'form-control', 'placeholder' => __('Offerte Titel'))); ?>
+					<?php echo $this -> Form -> input('offerte_text', array('class' => 'form-control', 'placeholder' => __('Offerte Text'))); ?>
+					<?php echo $this -> Form -> input('text_bauseits', array('class' => 'form-control', 'placeholder' => __('Bauseits'))); ?>
+					<?php echo $this -> Form -> input('text_konditionen', array('class' => 'form-control', 'placeholder' => __('Konditionen'))); ?>
+					<?php echo $this -> Form -> input('text_lieferfrist', array('class' => 'form-control', 'placeholder' => __('Lieferfrist'))); ?>
 					
 				</div>
 				
 				</div>
 				<div class="form-group">
-					<?php echo $this -> Form -> input('bill_number', array('class' => 'form-control', 'placeholder' => 'Bill Number')); ?>
+					<?php echo $this -> Form -> input('bill_number', array('class' => 'form-control', 'placeholder' => __('Bill Number'))); ?>
 				</div>
 				<div class="form-group">
-					<?php echo $this -> Form -> input('catcomplete', array('class' => 'form-control', 'placeholder' => 'Produkte suchen')); ?>
+					<?php echo $this -> Form -> input('paid_type',array('options' => array("Kredit" => "Kredit", "Post" => "Post")	) , array('class' => 'form-control', 'placeholder' => __('Paid Type'))); ?>
+				</div>
+				<div class="form-group">
+					<?php echo $this -> Form -> input('catcomplete', array('class' => 'form-control', 'placeholder' => __('Search Products'))); ?>
+				</div>
+				<div class="form-group">
+					<?php echo $this -> Form -> input('text_garantie', array('class' => 'form-control', 'placeholder' => __('Product Warranty'))); ?>
 				</div>
 				<div class="BillPosition">
 					<div class="Position">
 						<div style="width: 45%; float: left; clear: right; padding: 10px;">
 							<div class="form-group">
-							<?php echo $this -> Form -> input('BillPositions.0.BillPosition.description', array('class' => 'form-control', 'placeholder' => 'Description')); ?>
+							<?php echo $this -> Form -> input('BillPositions.0.BillPosition.description', array('class' => 'form-control', 'placeholder' => __('Description'))); ?>
 							</div>
 						</div>
 						<div style="width: 45%; float: left; padding: 10px;">
 							<div class="form-group">
-								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.price', array('class' => 'form-control', 'placeholder' => 'Price')); ?>
+								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.price', array('class' => 'form-control', 'placeholder' => __('Price'))); ?>
 							</div>
 							<div class="form-group">
-								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.amount', array('class' => 'form-control', 'placeholder' => 'Amount', 'value' => 1)); ?>
+								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.amount', array('class' => 'form-control', 'placeholder' => __('Amount'), 'value' => 1)); ?>
 							</div>
 							<div class="form-group">
-								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.vat', array('class' => 'form-control-chk', 'placeholder' => 'Vat')); ?>
+								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.kulanz', array('class' => 'form-control-chk', 'placeholder' => __('Kulanz'))); ?>
+							</div>
+							<div class="form-group">
+								<?php echo $this -> Form -> input('BillPositions.0.BillPosition.vat', array('class' => 'form-control-chk', 'placeholder' => __('Vat'))); ?>
 							</div>
 						</div>
 						<div style="width: 10%; float: right;">

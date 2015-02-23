@@ -23,6 +23,13 @@ public $helpers = array('Price');
  */
 	public $components = array('Paginator');
 
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->loadModel('Category');
+		$categories = $this->Category->find('list',array('order' => 'Category.name'));
+		$this->set('categories',$categories);
+	}
 /**
  * index method
  *
@@ -75,8 +82,6 @@ public $helpers = array('Price');
 				$this->Session->setFlash(__('The product could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
-		$categories = $this->Product->Category->find('list');
-		$this->set(compact('categories'));
 	}
 
 /**
@@ -102,7 +107,6 @@ public $helpers = array('Price');
 			$this->request->data = $this->Product->find('first', $options);
 		}
 		$categories = $this->Product->Category->find('list');
-		$this->set(compact('categories'));
 	}
 
 /**

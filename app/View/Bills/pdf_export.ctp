@@ -46,9 +46,9 @@ function roundTo($a) {
 		<table>
 			<tr>
 				<td colspan="2">
-					<?php echo $this -> Html -> image('wdlogo.png', array('width' => '200px', 'height' => '100px', 'fullBase' => true)); ?>
+					<img src="http://www.hundepflege-nadine.ch/bilder/wdlogo.png" width="200px" height="120px" />
 				</td>
-				<td colspan="2">
+				<td colspan="3">
 					<h3>Verkaufs-Servicecenter auf 3 Etagen<br />
 					<b>WD Oensingen AG</b></h3>
 				</td>
@@ -74,20 +74,39 @@ function roundTo($a) {
 					<?php echo $bill['Customer']['zip'] ?>
 					<?php echo $bill['Customer']['city'] ?>
 				</td>
+				<td>
+					&nbsp;
+				</td>
+			</tr>
+			<tr>
+				<td colspan="5">&nbsp;</td>
+			</tr>
+			<tr>
+				<td>
+					&nbsp;
+				</td>
+				<td>
+					&nbsp;
+				</td>
+				<td>
+					&nbsp;
+				</td>
+				<td colspan="2" style="text-align: left;">
+					<font>Oensingen, <?php echo date("d.m.Y") ?></font>
+				</td>
 			</tr>
 		</table>
-	</div>
-	<div style="width: 100%; height: 30px; text-align: right; margin-top: 50px;" class="date">
-		<font>Oensingen, <?php echo date("d.m.Y") ?></font>
 	</div>
 
 
 <?php
 if($bill['Bill']['bill_type_id'] == 6){
-	echo '<h3>Rechnung Nr. '.$bill['Bill']['bill_number'].'</h3>';
+	echo '<b>'.$bill['Bill']['offerte_titel'].'</b><br />';
 	echo $bill['Bill']['offerte_text'];
 }elseif($bill['Bill']['bill_type_id'] == 1){
 	echo '<div style="margin-bottom: 10px;">Neulieferung</div>';
+}else{
+	echo '<h3>Rechnung Nr. '.$bill['Bill']['bill_number'].'</h3>';
 }
 ?>
 <div>
@@ -111,11 +130,20 @@ if($bill['Bill']['bill_type_id'] == 6){
 			$tot += $position['amount'] * $position['price'];
 			echo '<tr>
 					<td>' . $position['amount'] . '</td>
-					<td>' . $position['id'] . '</td>
-					<td>' . $position['description'] . '</td>
-					<td style="width: 25px;">Fr.</td>
-					<td class="rightText">' . roundTo($position['amount'] * $position['price']) . '</td>
-				</tr>';
+					<td>' . $position['product_number'] . '&nbsp;</td>
+					<td>' . $position['description'] . '</td>';
+					if($position['price'] == 0){
+						echo '<td style="width: 25px;">&nbsp;</td>';
+						if($position['kulanz']){
+							echo '<td class="rightText">Kulanz</td></tr>';
+						}else{
+							echo '<td class="rightText">Gratis</td></tr>';
+						}
+					}else{
+						echo '<td style="width: 25px;">Fr.</td>
+						<td class="rightText">' . roundTo($position['amount'] * $position['price']) . '</td>
+						</tr>';
+					}
 		}
 		echo '<tr>
 			<td colspan="2">&nbsp;</td>
@@ -132,8 +160,10 @@ if($bill['Bill']['bill_type_id'] == 6){
 		?>
 	</table>
 	<?php
+	echo '<div class="garantie_text">'.$bill['Bill']['text_garantie'].'</div>';
+	
 	if($bill['Bill']['bill_type_id'] != 6){
-			echo '<div class="zahlungsinfo" style="position: relative; top: 60px;">Zahlung innert 30 Tagen rein Netto</div>';
+			echo '<div class="zahlungsinfo" style="position: absolute;">Zahlung innert 30 Tagen rein Netto</div>';
 		}else{
 			
 			$ret = '<div class="zahlungsinfo" style="position: relative; top: 60px;">

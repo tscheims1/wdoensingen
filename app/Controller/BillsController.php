@@ -103,7 +103,12 @@ public $helpers = array('Price');
 				$this->Session->setFlash(__('The bill could not be saved. Please, try again.'), 'default', array('class' => 'alert alert-danger'));
 			}
 		}
-		$customerid = $this->request->params['named']['customerid']; 
+		if(key_exists("customerid", $this->request->params['named'])){
+			$customerid = $this->request->params['named']['customerid'];
+		}else{
+			$customerid = '';
+		}
+		 
 		$customers = $this->Bill->Customer->find('list');
 		$billTypes = $this->Bill->BillType->find('list');
 		$this->set(compact('customers', 'billTypes', 'customerid'));
@@ -157,7 +162,18 @@ public $helpers = array('Price');
 		return $this->redirect(array('action' => 'index'));
 	}
 	
-	
+	/**
+	 * Set Paid date function
+	 * 
+	 * @param int $id The Bill ID
+	 */
+	public function setPaidDate($id = null){
+		$bill = $this->Bill->find('first',array('conditions'=> array('Bill.id' => $id)));
+		$dateTime = new DateTime("now");
+		$bill['Bill']['paid_date'] = $dateTime->format("Y-m-d h:i:s");
+		$this->Bill->save($bill);
+		return $this->redirect(array('action' => 'index'));
+	}
 	
 	/**
 	 * PDF export function

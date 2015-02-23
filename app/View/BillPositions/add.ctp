@@ -8,6 +8,60 @@
 		</div>
 	</div>
 
+<?php
+	echo $this -> Html -> script('billForm');
+	echo $this -> Html -> script('jqueryui/jquery-ui.min');
+	echo $this -> Html -> css('jqueryui/jquery-ui.min');
+	echo $this -> Html -> css('billForm');
+?>
+<script type="text/javascript">
+	$(document).ready(function(){
+	// Konfiguriere Widget
+	$.widget("custom.catcomplete", $.ui.autocomplete, {
+		_renderMenu : function(ul, items) {
+			var that = this, currentCategory = "";
+			$.each(items, function(index, item) {
+				if (item.category != currentCategory) {
+					ul.append("<li class='ui-autocomplete-category'>" + item.category + "</li>");
+					currentCategory = item.category;
+				}
+				that._renderItemData(ul, item);
+			});
+		},
+		_renderItem: function( ul, item ) {
+		  return $( "<li>" )
+		    .attr( "data-value", item.uid )
+		    .append( $( "<a>" ).text( item.label ) )
+		    .appendTo( ul );
+		}
+	});
+	
+	//Products data
+	<?php
+	$str = 'var produkte = [';
+	foreach ($Product as $ware) {
+		$str .= '{ label: "' . $ware['Product']['name'] . '", category:"' . $ware['Category']['name'] . '", uid: "' . $ware['Product']['id'] . '", catid: "' . $ware['Product']['category_id'] . '", number: "' . $ware['Product']['prodid'] . '", price: "' . $ware['Product']['price'] . '"},';
+	}
+	$str = substr($str, 0, -1);
+	$str .= ']';
+	echo $str;
+	?>
+		// Autocomplete action
+		$("#BillPositionCatcomplete").catcomplete({
+			delay : 0,
+			source : produkte,
+			select : function(event, ui) {
+				var ware = ui.item
+				var form = $('#BillPositionAddForm');					
+					$(form).find("textarea").val(ware.label);
+					$(form).find("input[name*=price]").val(ware.price);
+					$(form).find("input[name*=amount]").val("1");
+				return false;
+
+			}
+		});
+		});
+</script>
 
 
 	<div class="row">
@@ -37,19 +91,25 @@
 			<?php echo $this->Form->create('BillPosition', array('role' => 'form')); ?>
 
 				<div class="form-group">
-					<?php echo $this->Form->input('bill_id', array('class' => 'form-control', 'placeholder' => 'Bill Id'));?>
+					<?php echo $this->Form->input('bill_id', array('class' => 'form-control', 'placeholder' => __('Bill Id'), 'default' => $billid));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('description', array('class' => 'form-control', 'placeholder' => 'Description'));?>
+					<?php echo $this -> Form -> input('catcomplete', array('class' => 'form-control', 'placeholder' => __('Search Products'))); ?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('price', array('class' => 'form-control', 'placeholder' => 'Price'));?>
+					<?php echo $this->Form->input('description', array('class' => 'form-control', 'placeholder' => __('Description')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('vat', array('class' => 'form-control-chk', 'placeholder' => 'Vat'));?>
+					<?php echo $this->Form->input('price', array('class' => 'form-control', 'placeholder' => __('Price')));?>
 				</div>
 				<div class="form-group">
-					<?php echo $this->Form->input('amount', array('class' => 'form-control', 'placeholder' => 'Amount'));?>
+					<?php echo $this->Form->input('kulanz', array('class' => 'form-control-chk', 'placeholder' => __('Vat')));?>
+				</div>
+				<div class="form-group">
+					<?php echo $this->Form->input('vat', array('class' => 'form-control-chk', 'placeholder' => __('Vat')));?>
+				</div>
+				<div class="form-group">
+					<?php echo $this->Form->input('amount', array('class' => 'form-control', 'placeholder' => __('Amount')));?>
 				</div>
 				<div class="form-group">
 					<?php echo $this->Form->submit(__('Submit'), array('class' => 'btn btn-default')); ?>
